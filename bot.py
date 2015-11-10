@@ -26,4 +26,5 @@ def main():
                 reply = '@%s %s' % (tweet['user']['screen_name'], 'I love you baby')
                 twitterObject.statuses.update(status=reply, in_reply_to_status_id=tweet['id'])
 
-if __name__ == "__main__": main()
+if __name__ == "__main__":
+    main()
