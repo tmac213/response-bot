@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from pprint import pprint
 from secrets import *
+from time import sleep
 from twitter import *
 
 USERNAME = 'emilio___'
@@ -16,19 +17,13 @@ def main():
                                              API_KEY, API_SECRET))
 
     while True:
+        sleep(60)
         stream = twitterStream.user()
 
         for tweet in stream:
-            pprint(tweet)
-
-            if 'event' in tweet:
-                print('received event %s' % tweet['event'])
-            elif 'hangup' in tweet:
+            if 'hangup' in tweet:
                 return
             elif 'text' in tweet and tweet['user']['screen_name'] == '_mimi25':
-                print('from @%s: %s' % (tweet['user']['screen_name'],
-                                        tweet['text']))
-                print('responding with I love you')
                 reply = '@%s %s' % (tweet['user']['screen_name'],
                                     'I love you baby')
                 twObject.statuses.update(status=reply,
