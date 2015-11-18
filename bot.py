@@ -23,9 +23,9 @@ def main():
         for tweet in stream:
             if 'hangup' in tweet:
                 return
-            elif 'text' in tweet and tweet['user']['screen_name'] == '_mimi25':
+            elif 'text' in tweet and tweet['user']['screen_name'] == NOEMI:
                 reply = '@%s %s' % (tweet['user']['screen_name'],
-                                    'I love you baby')
+                                    NOEMI_RESPONSE)
                 twObject.statuses.update(status=reply,
                                          in_reply_to_status_id=tweet['id'])
 
